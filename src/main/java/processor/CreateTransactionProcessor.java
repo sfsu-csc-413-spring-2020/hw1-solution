@@ -19,7 +19,6 @@ public class CreateTransactionProcessor implements Processor {
     builder.setDate(new Date());
     builder.setParams(args);
     if(itemCode != null && paymentCode != null){
-      // Note does not check if these exists
       if(itemDao.hasItem(itemCode) && paymentMethodDao.hasMethod(paymentCode)){
         dao.addTransaction(itemCode, paymentCode);
         builder.setResponseCode("OK");
