@@ -15,8 +15,12 @@ public class AddItemProcessor implements Processor {
     builder.setDate(new Date());
     builder.setParams(args);
     if(name != null && priceString != null){
-      dao.addItem(name, Double.valueOf(priceString));
-      builder.setResponseCode("OK");
+      try{
+        dao.addItem(name, Double.valueOf(priceString));
+        builder.setResponseCode("OK");
+      }catch (Exception e){
+        builder.setResponseCode("ERROR");
+      }
     }else{
       builder.setResponseCode("ERROR");
     }
